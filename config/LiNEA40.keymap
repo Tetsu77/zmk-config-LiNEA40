@@ -1,4 +1,4 @@
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 150
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 80
 
 #include <dt-bindings/zmk/input_transform.h>
 #include <input/processors.dtsi>
@@ -54,7 +54,7 @@
 
 &trackball_listener {
     scroller {
-        layers = <5>;  // 使用数字
+        layers = <5>;  // 使用数字5
         input-processors = <
             &zip_xy_transform INPUT_TRANSFORM_Y_INVERT,
             &zip_xy_to_scroll_mapper
