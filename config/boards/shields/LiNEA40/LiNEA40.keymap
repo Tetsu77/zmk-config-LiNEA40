@@ -52,14 +52,12 @@
 
 &trackball_listener {
     scroller {
-        layers = <5>;
+        layers = <5>; // 替换为你的实际层
         input-processors = <
-            &zip_xy_transform INPUT_TRANSFORM_Y_INVERT
-            , &zip_xy_to_scroll_mapper
+            &zip_xy_transform INPUT_TRANSFORM_Y_INVERT // Y轴反转
+            , &zip_xy_scaler 1 2                       // 在这里降速！将速度减半
+            , &zip_xy_to_scroll_mapper                // 再映射为滚轮
         >;
-        // 限制X轴范围
-        x-min = <0>;
-        x-max = <0>;
     };
 };
 
