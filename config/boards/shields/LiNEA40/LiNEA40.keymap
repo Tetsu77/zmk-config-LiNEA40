@@ -52,7 +52,7 @@
 
 &trackball_listener {
     scroller {
-        layers = <SCROLL>;
+        layers = <5>;
         input-processors = <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT> // 1. 先方向反转
                          , <&zip_xy_to_scroll_mapper 0 10>;             // 2. X 轴设为 0 (屏蔽)，Y 轴除以 10 (降速)
     };
