@@ -53,10 +53,10 @@
 &trackball_listener {
     scroller {
         layers = <SCROLL>;
-        input-processors = <&zip_xy_scaler 0 1>                           // 1. 先屏蔽 X 轴
-                         , <&zip_xy_scaler 1 10>                         // 2. 将灵敏度直接降为 1/4（试用更明显的减速效果）
-                         , <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT> // 3. 反转方向
-                         , <&zip_xy_to_scroll_mapper>;                  // 4. 最后转换为滚轮
+        input-processors = <&zip_xy_scaler 0 1>                           // 1. 屏蔽 X 轴（左右）
+                         , <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT> // 2. 反转 Y 轴
+                         , <&zip_xy_to_scroll_mapper>                   // 3. 将轨迹球位移转换为滚轮信号
+                         , <&zip_wheel_scaler 1 4>;                     // 4. 只对轨迹球产生的滚轮信号进行 1/4 降速
     };
 };
 
