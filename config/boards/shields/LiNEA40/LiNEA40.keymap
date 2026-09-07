@@ -53,9 +53,9 @@
 &trackball_listener {
     scroller {
         layers = <SCROLL>;
-        input-processors = <&zip_xy_scaler 0 10>                          // 1. 屏蔽 X 轴（0/10=0），同时将 Y 轴直接缩小为原本的 1/10
-                         , <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT> // 2. 反转方向
-                         , <&zip_xy_to_scroll_mapper>;                  // 3. 将缩小后的微弱位移转为滚轮
+        input-processors = <&zip_xy_scaler 0 10>                           // 屏蔽 X，Y 轴缩小 10 倍
+                         , <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT> // 反转方向
+                         , <&zip_xy_to_scroll_mapper>;                  // 转换为滚轮
     };
 };
 
