@@ -52,11 +52,11 @@
 
 &trackball_listener {
     scroller {
-        layers = <Layer 5>;
-        input-processors = <&zip_xy_scaler 0 1>                           // 1. 屏蔽 X 轴（左右），Y 轴保持 1 倍
-                         , <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT> // 2. 保留原有的 Y 轴滚动方向反转
-                         , <&zip_xy_scaler 1 4>                         // 3. 【降速】将 Y 轴灵敏度设为 1/2（减速一半）
-                         , <&zip_xy_to_scroll_mapper>;                  // 4. 重映射为滚轮动作
+        layers = <SCROLL>;
+        input-processors = <&zip_xy_scaler 0 1>                           // 1. 先屏蔽 X 轴
+                         , <&zip_xy_scaler 1 4>                         // 2. 将灵敏度直接降为 1/4（试用更明显的减速效果）
+                         , <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT> // 3. 反转方向
+                         , <&zip_xy_to_scroll_mapper>;                  // 4. 最后转换为滚轮
     };
 };
 
