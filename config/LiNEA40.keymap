@@ -28,9 +28,9 @@
 
 &msc {
     delay-ms = <3>;
-    trigger-period-ms = <12>;
+    trigger-period-ms = <30>;
     acceleration-exponent = <0>;
-    time-to-max-speed-ms = <100>;
+    time-to-max-speed-ms = <1000>;
 };
 
 / {
@@ -55,8 +55,9 @@
 &trackball_listener {
     scroller {
         layers = <5>;
-        input-processors = <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>
-                         , <&zip_xy_to_scroll_mapper>;
+        input-processors =
+            <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
+            <&zip_xy_to_scroll_mapper>;
     };
 };
 
