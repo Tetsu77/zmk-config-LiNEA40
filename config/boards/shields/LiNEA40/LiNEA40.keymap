@@ -52,10 +52,12 @@
 
 &trackball_listener {
     scroller {
-        layers = <5>;
-        input-processors = <&zip_xy_scaler 0 1>                           // 1. X 轴乘以 0（锁定 X 轴），Y 轴保持 1 倍
-                         , <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT> // 2. Y 轴方向反转
-                         , <&zip_xy_to_scroll_mapper>;                  // 3. 转为滚轮（注意后面不要加数字！）
+        layers = <5>;  // 替换为您的目标层ID
+        input-processors = <
+            &zip_xy_transform INPUT_TRANSFORM_Y_INVERT  // Y轴反转
+            , &zip_xy_to_scroll_mapper                  // XY转滚轮
+            , &zip_xy_lock_x                            // 锁定X轴
+        >;
     };
 };
 
