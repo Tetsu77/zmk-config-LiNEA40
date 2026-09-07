@@ -45,7 +45,12 @@
 &msc_input_listener {
     speed_up {
         layers = <FUNCTION>;
-        input-processors = <&zip_wheel_scaler 3 1>; //スクロールを3倍速にする
+        input-processors = <&zip_wheel_scaler 3 1>; // FUNCTION层3倍速
+    };
+    // 新增：为SCROLL层降速
+    scroll_slow_down {
+        layers = <5>;  // SCROLL层
+        input-processors = <&zip_wheel_scaler 1 2>; // 速度减半
     };
 };
 
