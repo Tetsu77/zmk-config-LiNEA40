@@ -52,12 +52,14 @@
 
 &trackball_listener {
     scroller {
-        layers = <5>;  // 替换为您的目标层ID
+        layers = <SCROLL_LAYER>;
         input-processors = <
-            &zip_xy_transform INPUT_TRANSFORM_Y_INVERT  // Y轴反转
-            , &zip_xy_to_scroll_mapper                  // XY转滚轮
-            , &zip_xy_lock_x                            // 锁定X轴
+            &zip_xy_transform INPUT_TRANSFORM_Y_INVERT
+            , &zip_xy_to_scroll_mapper
         >;
+        // 限制X轴范围
+        x-min = <0>;
+        x-max = <0>;
     };
 };
 
