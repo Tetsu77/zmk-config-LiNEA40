@@ -52,9 +52,10 @@
 
 &trackball_listener {
     scroller {
-        layers = <SCROLL>;
-        input-processors = <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT> //スクロール方向を逆転
-                         , <&zip_xy_to_scroll_mapper>;
+        layers = <Layer 5>; // 这里的 SCROLL 对应就是 Layer 5
+        input-processors = <&zip_xy_scaler 0 1>                           // 屏蔽 X 轴（左右），保持 Y 轴
+                         , <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT> // 保留你原有的 Y 轴反转设置
+                         , <&zip_xy_to_scroll_mapper>;                  // 重映射为滚轮
     };
 };
 
