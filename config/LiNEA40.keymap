@@ -55,9 +55,9 @@
 &trackball_listener {
     scroller {
         layers = <5>;
-        input-processors = <&zip_xy_scaler 0 1>                           // 1. X 轴乘以 0 (完全锁定 X 轴)
+        input-processors = <&zip_xy_scaler 0 10>                          // 1. X 轴设为 0 (锁死 X 轴)，Y 轴设为 10 (缩放为 1/10 慢速)
                          , <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT> // 2. Y 轴方向反转
-                         , <&zip_xy_to_scroll_mapper>;                  // 3. 转为滚轮
+                         , <&zip_xy_to_scroll_mapper>;                  // 3. 将缩小后的信号转为滚轮
     };
 };
 
