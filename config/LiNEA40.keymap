@@ -10,10 +10,10 @@
 
 #define MOUSE 1
 #define MARK 2
-#define CURSOR 3
-#define FUNCTION 4
-#define SCROLL 5
-#define WIRELESS 6
+#define SCROLL 3
+#define WIRELESS 4
+#define TRACKBALL_SCROLL 5
+#define GAME 6
 
 //mouse cursol
 
@@ -34,15 +34,25 @@
 };
 
 / {
-    input_processors {
-        zip_wheel_scaler: zip_wheel_scaler {
-            compatible = "zmk,input-processor-scaler";
-            #input-processor-cells = <2>;
-            type = <INPUT_EV_REL>;
-            codes = <INPUT_REL_WHEEL>;
-            track-remainders;
-        };
+input_processors {
+
+    zip_wheel_scaler: zip_wheel_scaler {
+        compatible = "zmk,input-processor-scaler";
+        #input-processor-cells = <2>;
+        type = <INPUT_EV_REL>;
+        codes = <INPUT_REL_WHEEL>;
+        track-remainders;
     };
+
+
+    trackball_scroll_scaler: trackball_scroll_scaler {
+        compatible = "zmk,input-processor-scaler";
+        #input-processor-cells = <2>;
+        type = <INPUT_EV_REL>;
+        codes = <INPUT_REL_WHEEL>;
+        track-remainders;
+    };
+
 };
 
 &msc_input_listener {
@@ -54,11 +64,11 @@
 
 &trackball_listener {
     scroller {
-        layers = <SCROLL>;
+        layers = <TRACKBALL_SCROLL>;
         input-processors =
             <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
-            //スクロール方向を逆転,,,,,,,,
-            <&zip_xy_to_scroll_mapper>;
+            <&zip_xy_to_scroll_mapper>,
+            <&trackball_scroll_scaler 1 3>;
     };
 };
 
